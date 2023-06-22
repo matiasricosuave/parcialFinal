@@ -25,6 +25,10 @@ namespace waGimnasio.Controllers
         // GET: Gimnasios
         public async Task<IActionResult> Index()
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             var gimnasioContext = _context.Gimnasios
             .Include(g => g.IdDepartamentoNavigation)
             .Where(g => g.Estado == true); // Filtrar solo los gimnasios con Estado = true
@@ -35,6 +39,10 @@ namespace waGimnasio.Controllers
         // GET: Gimnasios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             if (id == null || _context.Gimnasios == null)
             {
                 return NotFound();
@@ -54,6 +62,10 @@ namespace waGimnasio.Controllers
         // GET: Gimnasios/Create
         public IActionResult Create()
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "Id", "Nombre");
             return View();
         }
@@ -83,6 +95,10 @@ namespace waGimnasio.Controllers
         // GET: Gimnasios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             if (id == null || _context.Gimnasios == null)
             {
                 return NotFound();
@@ -145,6 +161,10 @@ namespace waGimnasio.Controllers
         // GET: Gimnasios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             if (id == null || _context.Gimnasios == null)
             {
                 return NotFound();

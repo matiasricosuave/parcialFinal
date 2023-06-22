@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
 using waGimnasio.Models;
 
@@ -15,11 +16,19 @@ namespace waGimnasio.Controllers
 
         public IActionResult Index()
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             return View();
         }
 
         public IActionResult Privacy()
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             return View();
         }
 

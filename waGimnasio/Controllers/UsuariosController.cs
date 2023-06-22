@@ -30,25 +30,23 @@ namespace waGimnasio.Controllers
 
         public async Task<IActionResult> Index()
         {
+            // Verificar si el usuario está autenticado
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr))
+            {
+                return RedirectToAction("Login", "Usuarios");
+            }
+
+            // Obtener los datos del usuario de la sesión
+            var cusuario = JsonConvert.DeserializeObject<cDatosPer>(usuStr);
+
             var gimnasioContext = _context.Usuarios.Include(u => u.IdNavigation);
             var model = await gimnasioContext.ToListAsync();
 
-            // Obtener los datos del usuario de la sesión
-            var usuarioSession = HttpContext.Session.GetString("dat_usuario");
-
-            if (!string.IsNullOrEmpty(usuarioSession))
+            // Agregar los datos del usuario al modelo
+            foreach (var usuario in model)
             {
-                var cusuario = JsonConvert.DeserializeObject<cDatosPer>(usuarioSession);
-
-                // Agregar los datos del usuario al modelo
-                foreach (var usuario in model)
-                {
-                    usuario.Email = cusuario.nombre_completo;
-                }
-            }
-            else
-            {
-                // Lógica de manejo de error o redireccionamiento si la variable es nula o vacía
+                usuario.Email = cusuario.nombre_completo;
             }
 
             return View(model);

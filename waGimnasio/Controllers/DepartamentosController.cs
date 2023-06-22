@@ -26,7 +26,11 @@ namespace waGimnasio.Controllers
 
         public async Task<IActionResult> Index()
         {
-              return _context.Departamentos != null ? 
+                var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+                if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+                var usu = JsonConvert.DeserializeObject(usuStr);
+                if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
+                return _context.Departamentos != null ? 
                           View(await _context.Departamentos.ToListAsync()) :
                           Problem("Entity set 'GimnasioContext.Departamentos'  is null.");
         }
@@ -34,6 +38,10 @@ namespace waGimnasio.Controllers
         // GET: Departamentos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             if (id == null || _context.Departamentos == null)
             {
                 return NotFound();
@@ -52,6 +60,10 @@ namespace waGimnasio.Controllers
         // GET: Departamentos/Create
         public IActionResult Create()
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             return View();
         }
 
@@ -80,6 +92,10 @@ namespace waGimnasio.Controllers
         // GET: Departamentos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             if (id == null || _context.Departamentos == null)
             {
                 return NotFound();
@@ -131,6 +147,10 @@ namespace waGimnasio.Controllers
         // GET: Departamentos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var usuStr = this.HttpContext.Session.GetString("dat_usuario");
+            if (string.IsNullOrEmpty(usuStr)) { return RedirectToAction("Login", "Usuarios"); }
+            var usu = JsonConvert.DeserializeObject(usuStr);
+            if (usu == null) return RedirectToAction("Login", "Usuarios"); ;
             if (id == null || _context.Departamentos == null)
             {
                 return NotFound();
