@@ -1,0 +1,130 @@
+﻿@model waGimnasio.Models.Gimnasio
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    .section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 50px 0;
+    }
+
+    .content-container {
+        max-width: 600px;
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+    }
+
+        .content-container h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .control-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: #007bff;
+        border-radius: 4px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .back-link {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: #007bff;
+        border-radius: 4px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<div class="section">
+    <div class="content-container">
+        <h1>Edit</h1>
+
+        <h4>Gimnasio</h4>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Codigo" />
+
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control" style="width: 400px;" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Telefono" class="control-label"></label>
+                        <input asp-for="Telefono" class="form-control" style="width: 400px;" />
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Direccion" class="control-label"></label>
+                        <input asp-for="Direccion" class="form-control" style="width: 400px;" />
+                        <span asp-validation-for="Direccion" class="text-danger"></span>
+                    </div>
+
+     
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index" class="back-link">Back to List</a>
+        </div>
+    </div>
+</div>

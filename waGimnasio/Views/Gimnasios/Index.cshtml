@@ -1,0 +1,141 @@
+﻿@model IEnumerable<waGimnasio.Models.Gimnasio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 50px 0;
+    }
+
+    .content-container {
+        max-width: 800px;
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+    }
+
+        .content-container h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+    .create-link {
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .table-container {
+        margin-bottom: 20px;
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+        .table thead th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table tbody td {
+            padding: 8px;
+            border-top: 1px solid #ddd;
+        }
+
+        .table tbody tr:last-child td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+    .action-links a {
+        margin-right: 5px;
+        color: #007bff;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
+    .empty-message {
+        text-align: center;
+        color: #777;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="section">
+    <div class="content-container">
+        <h1>Index</h1>
+
+        <p class="create-link">
+            <a asp-action="Create" class="btn btn-primary btn-sm">Create New</a>
+        </p>
+
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Telefono
+                        </th>
+                        <th>
+                            Direccion
+                        </th>
+                        <th>
+                            Depto. Nav.
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefono)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Direccion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Nombre)
+
+                            </td>
+                            <td class="action-links">
+                                <a asp-action="Edit" asp-route-id="@item.Codigo">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.Codigo">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Codigo">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="6" class="empty-message">No records found.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

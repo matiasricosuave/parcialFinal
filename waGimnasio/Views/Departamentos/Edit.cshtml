@@ -1,0 +1,116 @@
+﻿@model waGimnasio.Models.Departamento
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    .section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 50px 0;
+    }
+
+    .content-container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+
+        .content-container h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .content-container h4 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+    .form-container {
+        max-width: 400px;
+        margin: 20px auto;
+        text-align: left;
+        font-family: Arial, sans-serif;
+    }
+
+        .form-container .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-container .form-group label {
+                font-weight: bold;
+            }
+
+        .form-container .form-control {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container .text-danger {
+            color: #dc3545;
+        }
+
+        .form-container .btn-primary {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+            .form-container .btn-primary:hover {
+                background-color: #0069d9;
+                border-color: #0062cc;
+            }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 16px;
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+
+<div class="section">
+    <div class="content-container">
+        <h1>Edit</h1>
+
+        <h4>Departamento</h4>
+        <hr />
+
+        <div class="form-container">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <a asp-action="Index" class="back-link">Back to List</a>
+        </div>
+    </div>
+</div>

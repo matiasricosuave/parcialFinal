@@ -1,0 +1,141 @@
+﻿@model waGimnasio.Models.Gimnasio
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<style>
+    .section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 50px 0;
+    }
+
+    .content-container {
+        max-width: 600px;
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+    }
+
+        .content-container h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+    .confirmation-message {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .details-list {
+        margin-top: 20px;
+    }
+
+        .details-list dt {
+            font-weight: bold;
+        }
+
+        .details-list dd {
+            margin-bottom: 10px;
+        }
+
+    .delete-form {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .delete-button {
+        padding: 8px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: #dc3545;
+        border-radius: 4px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+
+    .back-link {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: #007bff;
+        border-radius: 4px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<div class="section">
+    <div class="content-container">
+        <h1>Delete</h1>
+
+        <div class="confirmation-message">
+            <h3>Are you sure you want to delete this?</h3>
+        </div>
+
+        <div>
+            <h4>Gimnasio</h4>
+            <hr />
+            <dl class="row details-list">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Telefono)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Direccion)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Estado)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Estado)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IdDepartamentoNavigation.Id)
+                </dd>
+            </dl>
+        </div>
+
+        <form asp-action="Delete" class="delete-form">
+            <input type="hidden" asp-for="Codigo" />
+            <input type="submit" value="Delete" class="delete-button" />
+            <a asp-action="Index" class="back-link">Back to List</a>
+        </form>
+    </div>
+</div>
