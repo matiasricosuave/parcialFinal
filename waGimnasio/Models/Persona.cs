@@ -25,7 +25,7 @@ public partial class Persona
 
     public virtual Cliente? Cliente { get; set; }
 
-    public virtual Gimnasio CodigoGimnasioNavigation { get; set; } = null!;
+    public virtual Gimnasio ?CodigoGimnasioNavigation { get; set; }
 
     public virtual Usuario? Usuario { get; set; }
 }

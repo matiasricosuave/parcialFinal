@@ -19,5 +19,6 @@ public partial class Usuario
 
     public bool? Estado { get; set; }
 
-    public virtual Persona IdNavigation { get; set; } = null!;
+    public virtual Persona? IdNavigation { get; set; }
+
 }

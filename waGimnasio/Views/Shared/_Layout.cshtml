@@ -202,6 +202,14 @@
                 <a asp-area="" asp-controller="Gimnasios" asp-action="Index"><i class="bi bi-grid"></i> <span>Gimnasios</span></a>
             </li>
 
+            <li class="nav-item">
+                <a asp-area="" asp-controller="Personas" asp-action="Index"><i class="bi bi-grid"></i> <span>Personas</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a asp-area="" asp-controller="Usuarios1" asp-action="Index"><i class="bi bi-grid"></i> <span>Usuarios</span></a>
+            </li>
+
             <form method="post" action="@Url.Action("Logout", "Usuarios")">
                 <button type="submit">Cerrar sesión</button>
             </form>
